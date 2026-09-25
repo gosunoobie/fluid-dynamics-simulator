@@ -1,0 +1,185 @@
+/* Standalone styles. No framework, fonts, or ChatGPT host styles are required. */
+:root {
+  color-scheme: light dark;
+  --background: #ffffff;
+  --foreground: #232629;
+  --muted: #f1f2f3;
+  --muted-foreground: #626970;
+  --border: #d2d7dc;
+  --control: #ffffff;
+  --control-hover: #e9edf0;
+  --selected: #253643;
+  --selected-foreground: #ffffff;
+  --focus: #1679c4;
+  --sand-base: #d3b476;
+  --stone-base: #777978;
+  --water-base: #358dcc;
+  --lava-base: #ed6123;
+  --smoke-base: #777479;
+  --wood-base: #92603b;
+  --fire-base: #f79822;
+  --acid-base: #79b42f;
+  --steam-base: #acb8c0;
+  --oil-base: #5c4926;
+  --powder-base: #484b53;
+  --ice-base: #78b8d6;
+  --snow-base: #bcced9;
+  --metal-base: #8eabb8;
+  --ash-base: #a89f93;
+  --charcoal-base: #323437;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #191b1d;
+    --foreground: #edf0f2;
+    --muted: #252526;
+    --muted-foreground: #acb3ba;
+    --border: #4a5056;
+    --control: #262a2e;
+    --control-hover: #363e45;
+    --selected: #dce7ee;
+    --selected-foreground: #1f2d38;
+    --focus: #78c5ff;
+    --sand-base: #e0bf7f;
+    --stone-base: #8c8e8c;
+    --water-base: #398fce;
+    --lava-base: #ff7226;
+    --smoke-base: #979298;
+    --wood-base: #b07849;
+    --fire-base: #ffad32;
+    --acid-base: #a8d940;
+    --steam-base: #b6c6d0;
+    --oil-base: #9d793d;
+    --powder-base: #7c818c;
+    --ice-base: #a4d6eb;
+    --snow-base: #e5eef3;
+    --metal-base: #abc3ce;
+    --ash-base: #b5aea4;
+    --charcoal-base: #55585b;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font:
+    1rem/1.5 system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+.app-shell {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 28px 20px;
+}
+.app-header {
+  margin-bottom: 20px;
+}
+h1 {
+  margin: 0 0 6px;
+  font-size: 1.6rem;
+  font-weight: 650;
+  letter-spacing: -0.025em;
+}
+p {
+  margin: 0;
+}
+.app-header p,
+.app-footer,
+.status,
+.pixel-count {
+  color: var(--muted-foreground);
+}
+#element-sandbox {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+.viz-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.btn {
+  appearance: none;
+  min-height: 40px;
+  padding: 7px 13px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--control);
+  color: var(--foreground);
+  font: inherit;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.btn:hover {
+  background: var(--control-hover);
+}
+.btn[aria-pressed="true"] {
+  background: var(--selected);
+  color: var(--selected-foreground);
+  border-color: var(--selected);
+}
+.btn:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+.canvas-wrap {
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+#element-field {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  image-rendering: pixelated;
+  background: var(--muted);
+  touch-action: none;
+  cursor: crosshair;
+}
+.pixel-count {
+  font-variant-numeric: tabular-nums;
+  margin-left: auto;
+  white-space: nowrap;
+}
+.status {
+  min-height: 1.5em;
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+.app-footer {
+  margin-top: 22px;
+  font-size: 0.82rem;
+}
+.app-footer p + p {
+  margin-top: 4px;
+}
+.error-message {
+  margin-top: 16px;
+}
+@media (pointer: coarse) {
+  .btn {
+    min-height: 44px;
+  }
+}
+@media (max-width: 480px) {
+  .app-shell {
+    padding: 18px 12px;
+  }
+  .viz-controls {
+    gap: 6px;
+  }
+  .btn {
+    padding-inline: 10px;
+  }
+}
